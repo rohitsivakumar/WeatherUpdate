@@ -18,6 +18,7 @@ print(f'Fetching weather for "{city}"....')
 
 api_url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + api_key + "&units=metric"
 
+
 while True:
     resp = requests.get(api_url)
     if resp.status_code == 200:
@@ -81,6 +82,15 @@ while True:
         else:
             direction = " -- "
         print("Wind: {0} m/s, {1}".format(result['wind']['speed'], direction))
+
+        print("\n###### AIR QUALITY DATA #########\n")
+        air_api_url = "https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=" + str(result['coord']['lat']) + "&lon=" + str(result['coord']['lon']) + "&appid=" + api_key
+        air_resp = requests.get(air_api_url)
+        air_result = air_resp.json()
+        print("Air quality Index:", air_result['list'][0]['main']['aqi'])
+        print("Components")
+        for i in air_result['list'][0]['components']:
+            print("\t", i,":",air_result['list'][0]['components'][i])
 
         time.sleep(60)
         os.system("clear")
