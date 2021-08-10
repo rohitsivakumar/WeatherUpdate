@@ -89,8 +89,8 @@ while True:
         air_result = air_resp.json()
         print("Air quality Index:", air_result['list'][0]['main']['aqi'])
         print("Components")
-        for i in air_result['list'][0]['components']:
-            print("\t", i,":",air_result['list'][0]['components'][i])
+        for component_name in air_result['list'][0]['components']:
+            print("\t", component_name,":",air_result['list'][0]['components'][component_name])
 
         time.sleep(60)
         os.system("clear")
