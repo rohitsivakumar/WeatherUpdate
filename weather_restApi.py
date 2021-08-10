@@ -85,10 +85,22 @@ while True:
         print("Wind: {0} m/s, {1}".format(result['wind']['speed'], direction))
 
         print("\n###### AIR QUALITY DATA #########\n")
-        air_api_url = "https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=" + str(result['coord']['lat']) + "&lon=" + str(result['coord']['lon']) + "&appid=" + api_key
+        air_api_url = "https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=" + str(
+            result['coord']['lat']) + "&lon=" + str(result['coord']['lon']) + "&appid=" + api_key
         air_resp = requests.get(air_api_url)
         air_result = air_resp.json()
-        print("Air quality Index:", air_result['list'][0]['main']['aqi'])
+        quality = air_result['list'][0]['main']['aqi']
+        if quality == 1:
+            air = "Good"
+        elif quality == 2:
+            air = "Fair"
+        elif quality == 3:
+            air = "Moderate"
+        elif quality == 4:
+            air = "Poor"
+        elif quality == 5:
+            air = "Very Poor"
+        print(f'Air quality Index:{quality}, meaning - {air}')
         print("Components")
         for component_name in air_result['list'][0]['components']:
             print("\t", component_name,":",air_result['list'][0]['components'][component_name])
