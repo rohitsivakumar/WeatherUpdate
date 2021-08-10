@@ -10,6 +10,7 @@ import requests
 import time
 import datetime
 
+os.system("clear")
 print(" * - * - * -  * - *")
 print("Get Weather for your City using https://openweathermap.org")
 api_key = input("Enter your openweathermap API KEY: ")
