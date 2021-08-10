@@ -26,7 +26,6 @@ while True:
         # print("Server returned: OK:", response.status_code)
         # print("Server headers:", response.headers['Content-Type'])
         result = resp.json()
-        print(result)
         print("**************************************")
         print("City: {0}, Country: {1}".format(city, result['sys']['country']))
         print("Weather updated at: ", datetime.datetime.fromtimestamp(result['dt']).strftime('%d-%m-%Y, %H:%M:%S'))
