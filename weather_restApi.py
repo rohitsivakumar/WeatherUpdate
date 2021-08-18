@@ -11,20 +11,43 @@ import time
 import datetime
 from getpass import getpass
 
+
+def find_wind_direction(wind_speed_sector):
+    switcher = {
+        1: "N",
+        2: "NNE",   # North-North East
+        3: "NE",    # North East
+        4: "ENE",   # East-North East
+        5: "E",
+        6: "ESE",   # East-South East
+        7: "SE",
+        8: "SSE",   # South-South East
+        9: "S",
+        10: "SSW",  # South-South West
+        11: "SW",
+        12: "WSW",  # West-South West
+        13: "W",
+        14: "WNW",  # West-North West
+        15: "NW",
+        16: "NNW",  # North-North West
+        17: "N",
+    }
+    return switcher.get(wind_speed_sector, " -- ")
+
+
 os.system("clear")
 print(" * - * - * -  * - *")
 print("Get Weather for your City using https://openweathermap.org")
 api_key = getpass("Enter your openweathermap API KEY: ")
-if api_key != "":
-    city = input("Enter name of city: ")
-    if city != "":
-        print(f'Fetching weather for "{city}"....')
-    else:
-        print("Exiting! Enter a valid city name")
-else:
+if api_key == "":
     print("Exiting! Enter a valid API key")
     exit()
-
+city = input("Enter name of city: ")
+if city != "":
+    print(f'Fetching weather for "{city}"....')
+else:
+    print("Exiting! Enter a valid city name")
+    exit()
 
 api_url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + api_key + "&units=metric"
 
@@ -54,42 +77,7 @@ while True:
         # Converting wind speed in degrees to Directional Compass quadrants
         wind_speed = wind_speed_in_degrees % 360
         wind_speed_sector = round(wind_speed / 22.5, 0) + 1
-        if wind_speed_sector == 1:
-            direction = "N"
-        elif wind_speed_sector == 2:
-            direction = "NNE"  # North-North East
-        elif wind_speed_sector == 3:
-            direction = "NE"  # North East
-        elif wind_speed_sector == 4:
-            direction = "ENE"  # East-North East
-        elif wind_speed_sector == 5:
-            direction = "E"
-        elif wind_speed_sector == 6:
-            direction = "ESE"
-        elif wind_speed_sector == 7:
-            direction = "SE"
-        elif wind_speed_sector == 8:
-            direction = "SSE"
-        elif wind_speed_sector == 9:
-            direction = "S"
-        elif wind_speed_sector == 10:
-            direction = "SSW"
-        elif wind_speed_sector == 11:
-            direction = "SW"
-        elif wind_speed_sector == 12:
-            direction = "WSW"
-        elif wind_speed_sector == 13:
-            direction = "W"
-        elif wind_speed_sector == 14:
-            direction = "WNW"
-        elif wind_speed_sector == 15:
-            direction = "NW"
-        elif wind_speed_sector == 16:
-            direction = "NNW"
-        elif wind_speed_sector == 17:
-            direction = "N"
-        else:
-            direction = " -- "
+        direction = find_wind_direction(wind_speed_sector)
         print("Wind: {0} m/s, {1}".format(result['wind']['speed'], direction))
 
         print("\n###### AIR QUALITY DATA #########\n")
