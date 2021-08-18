@@ -9,16 +9,24 @@ import os
 import requests
 import time
 import datetime
+from getpass import getpass
 
 os.system("clear")
 print(" * - * - * -  * - *")
 print("Get Weather for your City using https://openweathermap.org")
-api_key = input("Enter your openweathermap API KEY: ")
-city = input("Enter name of city: ")
-print(f'Fetching weather for "{city}"....')
+api_key = getpass("Enter your openweathermap API KEY: ")
+if api_key != "":
+    city = input("Enter name of city: ")
+    if city != "":
+        print(f'Fetching weather for "{city}"....')
+    else:
+        print("Exiting! Enter a valid city name")
+else:
+    print("Exiting! Enter a valid API key")
+    exit()
+
 
 api_url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + api_key + "&units=metric"
-
 
 while True:
     resp = requests.get(api_url)
@@ -103,7 +111,7 @@ while True:
         print(f'Air quality Index:{quality}, meaning - {air}')
         print("Components")
         for component_name in air_result['list'][0]['components']:
-            print("\t", component_name,":",air_result['list'][0]['components'][component_name])
+            print("\t", component_name, ":", air_result['list'][0]['components'][component_name])
 
         time.sleep(60)
         os.system("clear")
