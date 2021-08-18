@@ -42,6 +42,7 @@ api_key = getpass("Enter your openweathermap API KEY: ")
 if api_key == "":
     print("Exiting! Enter a valid API key")
     exit()
+
 city = input("Enter name of city: ")
 if city != "":
     print(f'Fetching weather for "{city}"....')
