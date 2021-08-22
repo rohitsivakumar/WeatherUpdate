@@ -15,8 +15,8 @@ def check_internet(url="https://8.8.8.8"):
     try:
         requests.get(url, timeout=timeout)
         print("Connected to the Internet")
-    except (requests.ConnectionError, requests.Timeout):
-        print("No internet connection.")
+    except (requests.ConnectionError, requests.Timeout) as err:
+        print("Could not reach the site. Either no internet connection or check site exists.\n\n [%s]" % err)
 
 
 arg_descriptor = "Pass the URL to check internet connection.\n"
