@@ -10,19 +10,14 @@ import argparse
 
 
 def check_internet(url="https://8.8.8.8"):
-    internet_status = False
     timeout = 5
     if "https:" not in url:
         url = "https://" + url
     try:
-        request = requests.get(url, timeout=timeout)
+        requests.get(url, timeout=timeout)
         print("Connected to the Internet")
-        internet_status = True
-    except (requests.ConnectionError, requests.Timeout) as exception:
+    except (requests.ConnectionError, requests.Timeout):
         print("No internet connection.")
-        internet_status = False
-
-    return internet_status
 
 
 arg_descriptor = "Pass the URL to check internet connection.\n"
