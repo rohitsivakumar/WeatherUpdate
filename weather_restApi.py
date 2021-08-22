@@ -11,6 +11,7 @@ import time
 import datetime
 from getpass import getpass
 
+
 def find_wind_direction(wind_speed_sector):
     switcher = {
         1: "N",
