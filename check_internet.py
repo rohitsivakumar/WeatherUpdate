@@ -5,7 +5,6 @@
     Author: Rohit Sivakumar
     Date: 22-AUG-2021
 """
-
 import requests
 import argparse
 
