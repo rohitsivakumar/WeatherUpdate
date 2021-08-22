@@ -11,17 +11,16 @@ import time
 import datetime
 from getpass import getpass
 
-
 def find_wind_direction(wind_speed_sector):
     switcher = {
         1: "N",
-        2: "NNE",   # North-North East
-        3: "NE",    # North East
-        4: "ENE",   # East-North East
+        2: "NNE",  # North-North East
+        3: "NE",  # North East
+        4: "ENE",  # East-North East
         5: "E",
-        6: "ESE",   # East-South East
+        6: "ESE",  # East-South East
         7: "SE",
-        8: "SSE",   # South-South East
+        8: "SSE",  # South-South East
         9: "S",
         10: "SSW",  # South-South West
         11: "SW",
