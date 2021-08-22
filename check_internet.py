@@ -26,7 +26,7 @@ def check_internet(url="https://8.8.8.8"):
 
 
 arg_descriptor = "Pass the URL to check internet connection.\n"
-arg_descriptor += "You can provide your custom site to ping as:\n ./check_internet.py -s \"www.google.com\""
+arg_descriptor += "You can provide your custom site to ping as:\n python check_internet.py -s \"www.google.com\""
 
 # Initialize the parser
 parser = argparse.ArgumentParser(description=arg_descriptor)
