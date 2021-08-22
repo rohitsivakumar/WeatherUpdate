@@ -1,7 +1,6 @@
-# !/usr/bin/env python3
 """
-    Description: This program demonstrates the use of RESTAPI from https://openweathermap.org. to fetch the
-    current weather details based on the city name.
+    Description: This program checks for presence/absence of internet connection based on
+                 site address passed as cmdline arguments
     Author: Rohit Sivakumar
     Date: 22-AUG-2021
 """
@@ -38,5 +37,5 @@ if site_to_ping is None:
     print("\nDefaulting to use :  www.google.com")
     check_internet("www.google.com")
 else:
-    print("\nPinging %s" % site_to_ping)
+    print("\nChecking using %s" % site_to_ping)
     check_internet(site_to_ping)
