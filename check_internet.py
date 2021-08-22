@@ -1,3 +1,11 @@
+# !/usr/bin/env python3
+"""
+    Description: This program demonstrates the use of RESTAPI from https://openweathermap.org. to fetch the
+    current weather details based on the city name.
+    Author: Rohit Sivakumar
+    Date: 22-AUG-2021
+"""
+
 import requests
 import argparse
 
