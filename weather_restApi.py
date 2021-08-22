@@ -1,4 +1,4 @@
-# !/usr/bin/env python
+# !/usr/bin/env python3
 """
     Description: This program demonstrates the use of RESTAPI from https://openweathermap.org. to fetch the
     current weather details based on the city name.
@@ -86,6 +86,7 @@ while True:
         air_resp = requests.get(air_api_url)
         air_result = air_resp.json()
         quality = air_result['list'][0]['main']['aqi']
+        air = ""
         if quality == 1:
             air = "Good"
         elif quality == 2:
